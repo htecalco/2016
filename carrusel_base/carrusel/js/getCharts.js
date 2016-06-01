@@ -39,7 +39,12 @@ var app = {
         //console.log(entidades.length);
         if (entidades.length!=0){
 	        entidad=entidades[app.id];
-	        console.log(entidad);
+	        console.log(entidades[Number(app.id)+1]);
+	        if (typeof(entidades[Number(app.id)+1])!=='undefined'){
+		        siguiente=Number(app.id)+1;
+	        }else{
+		        siguiente=0;
+	        }
 	        var nombreSeccion = entidad.nombre;
 	        var totalActas = entidad.total_actas;
 			var totalVotos = entidad.total_de_votos;

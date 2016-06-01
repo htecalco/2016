@@ -172,8 +172,8 @@ if ($simulacro!=-1){?>
 
 <script language="Javascript">
 	
-    	/*window.setTimeout(function(){
-    		window.location.href = "index.php?e=<?php echo $elec;?>&id=<?php echo $siguiente;?>"
-    	},10000);*/
+    	window.setTimeout(function(){
+    		window.location.href = "index.php?e="+eleccion+"&id="+siguiente
+    	},10000);
 	
 </script>
