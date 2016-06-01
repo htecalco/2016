@@ -75,7 +75,7 @@ header("Expires: Sat, 26 Jul 1997 05:00:00 GMT"); // Fecha en el pasado
 	}else{
 		var eleccion = 'gobernador';
 	}
-	console.log(eleccion + ' ' + actual);
+	//console.log(eleccion + ' ' + actual);
 	
 </script>
 
