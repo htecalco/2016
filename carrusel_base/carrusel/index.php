@@ -45,11 +45,45 @@ header("Expires: Sat, 26 Jul 1997 05:00:00 GMT"); // Fecha en el pasado
 	$elec='gobernador';	
 ?>
 
+<script language="javascript">
+	function getUrlVars() {
+		var vars = {};
+		var parts = window.location.href.replace(/[?&]+([^=&]+)=([^&]*)/gi, function(m,key,value) {
+		vars[key] = value;
+		});
+		return vars;
+	}
+	
+	if (typeof(getUrlVars()["id"])!=='undefined'){
+		var actual=getUrlVars()["id"];
+	}else{
+		var actual = 0;
+	}
+	if (typeof(getUrlVars()["eleccion"])!=='undefined'){
+		switch (getUrlVars()["eleccion"]){
+			case 'a': 
+				var eleccion='ayuntamientos';
+				break;
+			case 'd':
+				var eleccion='diputados';
+				break;
+			case 'g':
+				var eleccion='gobernador';
+				break;
+		}
+		
+	}else{
+		var eleccion = 'gobernador';
+	}
+	console.log(eleccion + ' ' + actual);
+	
+</script>
+
 <!doctype html>
 <html>
   <head>
     <meta charset="utf-8">
-    <title>PROGRAMA DE RESULTADOS ELECTORALES PRELIMINARES YUCATÁN 2015</title>
+    <title>PROGRAMA DE RESULTADOS ELECTORALES PRELIMINARES DEL ESTADO 2016</title>
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width">
     <meta http-equiv="cache-control" content="max-age=0" />
@@ -60,12 +94,14 @@ header("Expires: Sat, 26 Jul 1997 05:00:00 GMT"); // Fecha en el pasado
 
     <link rel="stylesheet" type="text/css" href="css/reset.css" />
     <link rel="stylesheet" type="text/css" href="css/styles.css" />
+    
+ 
   </head>
   <body>
     <header>
         <div class="logo-instituto"></div>
         <div class="datos-elecciones">
-            <h3>YUCATÁN <span class="set-year">2015</span></h3>
+            <h3>ESTADO <span class="set-year">2016</span></h3>
             <h4>PROGRAMA DE RESULTADOS ELECTORALES PRELIMINARES</h4>
         </div>
         <div class="logo-proisi"><img src="images/logo_proisi.png" alt="" /></div>
@@ -120,8 +156,8 @@ if ($simulacro!=-1){?>
     <script type="text/javascript" src="js/getCharts.js"></script>
     <script type="text/javascript">
     	$(document).ready(function (){
-    		app.categoria = '<?php echo $elec;?>';
-    		app.id = <?php echo $id;?>;
+    		app.categoria = eleccion;
+    		app.id = actual;
     		//app.simulacro=<?php echo $simulacro;?>;
     		app.getData();
     	});

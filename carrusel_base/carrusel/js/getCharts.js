@@ -4,7 +4,7 @@ var app = {
     simulacro: '',
     getData : function (){
         //$.get('../jsons/'+app.simulacro+'/'+app.categoria+app.id+'.json', app.getCharts);
-        $.get('../'+app.categoria+'.json', app.getCharts);
+        $.get('../json/'+app.categoria+'.json', app.getCharts);
     },
     evalCandidato : function (siglas, candidatos){
         var nombre = '';
@@ -38,7 +38,7 @@ var app = {
         entidades=data['data'];
         console.log(entidades.length);
         if (entidades.length!=0){
-	        if (app.id==0)
+	        if (app.id==0){}
         }
         
         /*var porcentajeVotacion = Number(data[0].participacion);
