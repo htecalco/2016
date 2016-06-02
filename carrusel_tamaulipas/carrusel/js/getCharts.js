@@ -123,7 +123,7 @@ var app = {
             title: {
                 text: 'Participación Ciudadana'
             },
-            colors: ['#F8831C', '#BBB'],
+            colors: ['#A12A0F', '#BBB'],
             series: [{
                 type: 'pie',
                 name: 'Participación Ciudadana',
@@ -154,7 +154,7 @@ var app = {
             title: {
                 text: 'Captura de Actas'
             },
-            colors: ['#F8831C', '#BBB'],
+            colors: ['#A12A0F', '#BBB'],
             series: [{
                 type: 'pie',
                 name: 'Captura de Actas',
