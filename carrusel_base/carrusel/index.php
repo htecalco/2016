@@ -1,50 +1,3 @@
-<?php
-/*header("Cache-Control: no-cache, must-revalidate"); // HTTP/1.1
-header("Expires: Sat, 26 Jul 1997 05:00:00 GMT"); // Fecha en el pasado
-	$id='';
-	if (!isset($_GET['e'])){
-		$elec='A';
-		$id=1;
-		
-	}else{
-		$elec=$_GET['e'];
-		if (isset($_GET['id'])){
-			$id=$_GET['id'];
-		}
-	}
-	
-
-	//obtener nombre de json actual
-	$actual=$elec . $id . ".json";
-	//obtener json siguiente
-	
-	$encontrado=false;
-	$simulacro=-1;	
-	ini_set('auto_detect_line_endings',TRUE);
-	$handle = fopen('../archivo.csv','r');
-	while ( ($row = fgetcsv($handle) ) !== FALSE ) {
-		if ($row[0]==$elec ){
-			if ($id==''){
-				$id=$row[1];
-				$encontrado=true;
-				$simulacro=$row[3];
-			}elseif ($id==$row[1]){
-				$encontrado=true;
-				$simulacro=$row[3];
-			}elseif ($encontrado){
-				$siguiente=$row[1];
-				break;
-			}
-		}elseif ($encontrado){
-			break;
-		}
-	}
-	ini_set('auto_detect_line_endings',FALSE);*/
-	$id=1;
-	//$simulacro=1;
-	$elec='gobernador';	
-?>
-
 <script language="javascript">
 	function getUrlVars() {
 		var vars = {};
@@ -59,31 +12,18 @@ header("Expires: Sat, 26 Jul 1997 05:00:00 GMT"); // Fecha en el pasado
 	}else{
 		var actual = 0;
 	}
-	if (typeof(getUrlVars()["eleccion"])!=='undefined'){
-		switch (getUrlVars()["eleccion"]){
-			case 'a': 
-				var eleccion='ayuntamientos';
-				break;
-			case 'd':
-				var eleccion='diputados';
-				break;
-			case 'g':
-				var eleccion='gobernador';
-				break;
-		}
+	if (typeof(getUrlVars()["e"])!=='undefined'){
+		eleccion=getUrlVars()["e"];
 		
 	}else{
 		var eleccion = 'gobernador';
 	}
-	//console.log(eleccion + ' ' + actual);
-	
 </script>
-
 <!doctype html>
 <html>
   <head>
     <meta charset="utf-8">
-    <title>PROGRAMA DE RESULTADOS ELECTORALES PRELIMINARES DEL ESTADO 2016</title>
+    <title>PROGRAMA DE RESULTADOS ELECTORALES PRELIMINARES DE DURANGO 2016</title>
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width">
     <meta http-equiv="cache-control" content="max-age=0" />
@@ -101,7 +41,7 @@ header("Expires: Sat, 26 Jul 1997 05:00:00 GMT"); // Fecha en el pasado
     <header>
         <div class="logo-instituto"></div>
         <div class="datos-elecciones">
-            <h3>ESTADO <span class="set-year">2016</span></h3>
+            <h3>DURANGO <span class="set-year">2016</span></h3>
             <h4>PROGRAMA DE RESULTADOS ELECTORALES PRELIMINARES</h4>
         </div>
         <div class="logo-proisi"><img src="images/logo_proisi.png" alt="" /></div>
@@ -148,9 +88,6 @@ header("Expires: Sat, 26 Jul 1997 05:00:00 GMT"); // Fecha en el pasado
         </div>
         <!-- FIN DE CONTENIDO -->
     </section>
-<?php
-if ($simulacro!=-1){?>
-
     <script type="text/javascript" src="js/jquery.min.js"></script>
     <script type="text/javascript" src="js/highcharts.js"></script>
     <script type="text/javascript" src="js/getCharts.js"></script>
@@ -162,18 +99,10 @@ if ($simulacro!=-1){?>
     		app.getData();
     	});
     </script>
-<?php 
-}
-?>
   </body>
 </html>
-
-
-
-<script language="Javascript">
-	
+<script language="Javascript">	
     	window.setTimeout(function(){
     		window.location.href = "index.php?e="+eleccion+"&id="+siguiente
-    	},10000);
-	
+    	},10000);	
 </script>

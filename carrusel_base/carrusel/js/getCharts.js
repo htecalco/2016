@@ -3,36 +3,7 @@ var app = {
     id : 0,
     simulacro: '',
     getData : function (){
-        //$.get('../jsons/'+app.simulacro+'/'+app.categoria+app.id+'.json', app.getCharts);
         $.get('../json/'+app.categoria+'.json', app.getCharts);
-    },
-    evalCandidato : function (siglas, candidatos){
-        var nombre = '';
-
-        switch (siglas){
-            case 'PAN':
-                nombre = 'Mauricio Vila';
-                break;
-            case 'SUM PRI+PV+PNA+CC1':
-                nombre = 'Nerio Torres';
-                break;
-            case 'SUM PRD+PT+CC2':
-                nombre = 'Carlos Carvajal';
-                break;
-            case 'MC':
-                nombre = 'Ana Rosa Payán';
-                break;
-            case 'MOR':
-                nombre = 'Gilda María Ake';
-                break;
-            case 'CNR':
-                nombre = 'Candidato No Registrado';
-                break;
-            default:
-                nombre = siglas;
-        }
-
-        return nombre;
     },
     getCharts : function (data){
         entidades=data['data'];
@@ -62,9 +33,7 @@ var app = {
         var porcentajeActasXCapturar = 100 - porcentajeActasCapturadas;
 
         var dataGrafica = [];
-        var markup = '';
-
-    
+        var markup = '';   
 
         for ( var i = 0; i < entidad.votos_por_partido.length; i++ ){
             var obj = {};
@@ -72,11 +41,9 @@ var app = {
             var imagen = '';
 
             if ( partido.en_grafica ){
-                /*if ( app.categoria === 'A' && app.id === 50 ){
-                    obj.name = app.evalCandidato(partido.partido_siglas, entidad.infopartidos);
-                } else {*/
-                    obj.name = partido.partido_siglas;
-                //}
+                
+                obj.name = partido.partido_siglas;
+                
                 
                 obj.y = Number(partido.votos);
                 obj.color = partido.color;
