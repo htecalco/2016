@@ -24,7 +24,7 @@
 <html>
   <head>
     <meta charset="utf-8">
-    <title>PROGRAMA DE RESULTADOS ELECTORALES PRELIMINARES DE DURANGO 2016</title>
+    <title>PROGRAMA DE RESULTADOS ELECTORALES PRELIMINARES DE VERACRUZ 2016</title>
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width">
     <meta http-equiv="cache-control" content="max-age=0" />
@@ -42,7 +42,7 @@
     <header>
         <div class="logo-instituto"></div>
         <div class="datos-elecciones">
-            <h3>DURANGO <span class="set-year">2016</span></h3>
+            <h3>VERACRUZ <span class="set-year">2016</span></h3>
             <h4>PROGRAMA DE RESULTADOS ELECTORALES PRELIMINARES</h4>
         </div>
         <div class="logo-proisi"><img src="images/logo_proisi.png" alt="" /></div>

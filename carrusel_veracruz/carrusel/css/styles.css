@@ -1,0 +1,116 @@
+/*styles.css*/
+@font-face {
+    font-family: 'pt_sans_narrowbold';
+    src: url('../fonts/pt_sans-narrow-web-bold-webfont.eot');
+    src: url('../fonts/pt_sans-narrow-web-bold-webfont.eot?#iefix') format('embedded-opentype'),
+         url('../fonts/pt_sans-narrow-web-bold-webfont.woff2') format('woff2'),
+         url('../fonts/pt_sans-narrow-web-bold-webfont.woff') format('woff'),
+         url('../fonts/pt_sans-narrow-web-bold-webfont.ttf') format('truetype'),
+         url('../fonts/pt_sans-narrow-web-bold-webfont.svg#pt_sans_narrowbold') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'pt_sans_narrowregular';
+    src: url('../fonts/pt_sans-narrow-web-regular-webfont.eot');
+    src: url('../fonts/pt_sans-narrow-web-regular-webfont.eot?#iefix') format('embedded-opentype'),
+         url('../fonts/pt_sans-narrow-web-regular-webfont.woff2') format('woff2'),
+         url('../fonts/pt_sans-narrow-web-regular-webfont.woff') format('woff'),
+         url('../fonts/pt_sans-narrow-web-regular-webfont.ttf') format('truetype'),
+         url('../fonts/pt_sans-narrow-web-regular-webfont.svg#pt_sans_narrowregular') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+
+* { outline: none; font-size: 14px; font-family: Arial, sans-serif; font-weight: normal; color: #221c1e; box-sizing: border-box; }
+h1, h2, h3, h4, h5, h6 { font-family: 'pt_sans_narrowbold', Arial, sans-serif; }
+
+h1 span { font-family: 'pt_sans_narrowbold', Arial, sans-serif; }
+
+.orange { color: #F8831C; }
+
+body { background-color: #fafafa; width: 100%; height: 100%; }
+
+header { position: relative; height: 80px; background: #f2f2f2; background: -moz-linear-gradient(top,  #f2f2f2 0%, #dadada 100%); background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#f2f2f2), color-stop(100%,#dadada)); background: -webkit-linear-gradient(top,  #f2f2f2 0%,#dadada 100%); background: -o-linear-gradient(top,  #f2f2f2 0%,#dadada 100%); background: -ms-linear-gradient(top,  #f2f2f2 0%,#dadada 100%); background: linear-gradient(to bottom,  #f2f2f2 0%,#dadada 100%); filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#f2f2f2', endColorstr='#dadada',GradientType=0 ); border-bottom: 6px solid #F8831C; }
+
+header .set-year { font-size: 20px; color: #F8831C; font-family: 'pt_sans_narrowbold', Arial, sans-serif; }
+header .logo-instituto { width: 70px; height: 46px; background-size: cover; background-image: url(../images/logo.png); margin: 0 20px; position: relative; top: 15px; float: left; }
+header .datos-elecciones { margin: 0 20px; padding: 10px; float: left; }
+header .datos-elecciones h3, header .datos-elecciones h4 { color: #555; font-size: 20px; }
+header .logo-proisi { margin: 10px 20px; float: right; }
+
+section { min-height: 500px; }
+section .container { padding-top: 30px; }
+
+.clear { clear: both; }
+
+.header { float: right; border-right: 9px solid #F8831C; font-size: 36px; font-family: 'pt_sans_narrowbold'; margin-right: 20px; padding-right: 20px; color: #888; }
+
+.charts { clear: both; margin: 0 auto; width: 1880px; margin-top: 50px; }
+
+.section-1 { width: 1500px; float: left; margin-right: 30px; margin-top: 30px; }
+.section-1 .totales { background-color: #fff; width: 100%; height: 70px; margin-bottom: 30px; }
+.section-1 .totales ul { list-style: none; }
+.section-1 .totales ul li { float: left; margin: 0 120px; color: #333; font-family: Arial, sans-serif; font-weight: 700; line-height: 70px; }
+.section-1 .subsection-1 {  }
+.section-1 .subsection-1 .table { width: 320px; float: left; margin-right: 50px; }
+.section-1 .subsection-1 .column-chart { width: 1130px; float: right; background-color: #fff; height: 740px; padding: 30px; }
+.section-1 .totales ul li span.purple { padding: 0 30px; color: #6b173b; font-family: Arial, sans-serif; }
+.section-2 { width: 350px; float: right; margin-top: 30px; }
+
+.pie-chart-1, .pie-chart-2 { background-color: #fff; padding: 20px; height: 360px; }
+.pie-chart-2 { margin-top: 60px; }
+
+table.table th, table.table td { padding: 8px 10px; font-size: 18px; font-family: Arial, sans-serif; vertical-align: middle; border-bottom: 1px solid #ddd; }
+
+#contenido h3 {	font-size: 34px; font-weight: lighter; text-transform: uppercase; color: #888; }
+.ng-isolate-scope { display: inline-block; margin: auto; padding: 20px 0px; }
+#comparativa h4 { margin-bottom: 5px; }
+#comparativa h5, #comparativa h6 { font-size: 16px; font-weight: normal; }
+.section h1, .section h1 span { font-size: 30px; text-align: center; margin-bottom: 20px; color: #555; }
+.center { text-align: center; }
+
+#gobernador .portada-grafica { border: 1px solid #ccc; margin: 20px 0 0 0; -webkit-border-radius: 20px; -moz-border-radius: 20px; -o-border-radius: 20px; -ms-border-radius: 20px; border-radius: 20px; background-color: #fff; }
+#gobernador h4 { font-size: 24px; }
+#gobernador h4.orange { font-size: 30px; }
+
+.myGrid { height: 500px; width: 100%; }
+
+span.th-icon, span.th-text { color: #fff; font-size: 12px; line-height: 24px; }
+span.th-icon { display: block; background-image: url(../images/logos-partidos.png); width: 24px; height: 24px; color: #fff; line-height: 24px; position: relative; bottom: 0; background-repeat: no-repeat; background-position: 25px 0; }
+span.th-icon.text-black { color: #333; }
+span.th-icon.PAN-icon { background-position: 0 0; text-indent: -99999px; }
+span.th-icon.PRI-icon { background-position: -25px 0; text-indent: -99999px; }
+span.th-icon.PRD-icon { background-position: -50px 0; text-indent: -99999px; }
+span.th-icon.PV-icon { background-position: -75px 0; text-indent: -99999px; }
+span.th-icon.PT-icon { background-position: -100px 0; text-indent: -99999px; }
+span.th-icon.MC-icon { background-position: -125px 0; text-indent: -99999px; }
+span.th-icon.NA-icon { background-position: -150px 0; text-indent: -99999px; }
+span.th-icon.MOR-icon { background-position: -175px 0; text-indent: -99999px; }
+span.th-icon.PH-icon { background-position: -200px 0; text-indent: -99999px; }
+span.th-icon.PES-icon { background-position: -225px 0; text-indent: -99999px; }
+span.th-icon.CP-icon { background-position: -250px 0; text-indent: -99999px; }
+
+table.data-detail thead { background-color: #221c1e; display: block; }
+table.data-detail th, table.data-detail td { text-align: center; width: 49px; }
+table.data-detail td:nth-child(1), table.data-detail th:nth-child(1) { width: 38px; }
+table.data-detail td:nth-child(2), table.data-detail th:nth-child(2) { width: 160px; }
+table.data-detail td:nth-child(3), table.data-detail th:nth-child(3) { width: 123px; }
+table.data-detail td:nth-child(4), table.data-detail th:nth-child(4) { width: 83px; }
+table.data-detail th { font-size: 13px; color: #fff; }
+table.data-detail td { font-size: 12px; }
+table.data-detail tbody { height: 500px; width: 1140px; overflow-y: scroll; display: block; }
+table.data-detail td.partidos-td { width: 48px; text-align: center; }
+table.data-detail th.partidos-th { width: 48px; text-align: center; font-size: 10px; }
+
+table.votos-partidos { border: 1px solid #ccc; }
+table.votos-partidos thead { background-color: #221c1e; }
+table.votos-partidos th { color: #fff; }
+table.votos-partidos th, table.votos-partidos td { font-size: 12px; text-align: center; }
+table.data-actas { border: 1px solid #ccc; }
+table.data-actas td { font-size: 12px; text-align: center; }
+
+.text-left { text-align: left; }
+.text-right { text-align: right; }
+.center { text-align: center; }
