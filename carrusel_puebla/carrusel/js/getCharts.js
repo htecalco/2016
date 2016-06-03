@@ -184,7 +184,7 @@ var app_portada = {
         
 		    portada= 0 ;
 			siguiente=app_portada.id;
-	        var nombreSeccion = entidad.titulo;
+	        var nombreSeccion = 'Gr&aacute;ficas globales de '+entidad.titulo;
 	        var totalActas = entidad.actas_totales;
 			var totalVotos = entidad.votos;
 			var actasEsperadas = entidad.actas_esperadas;
