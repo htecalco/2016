@@ -64,6 +64,11 @@
             		<div class="totales">
             			<ul>
             				<li>Total de Actas: <span class="purple total-actas">0</span></li>
+            				<li>Actas esperadas: <span class="purple actas-esperadas">0</span></li>
+            				<li>Actas capturadas: <span class="purple actas-capturadas">0</span></li>
+            				<li>Actas publicadas: <span class="purple actas-publicadas">0</span></li>
+            				<li>Actas contabilizadas: <span class="purple actas-contabilizadas">0</span></li>
+            				<li>Actas inconsistentes: <span class="purple actas-inconsistentes">0</span></li>
             				<li><!-- Total de Votos: <span class="purple total-votos">0</span> --></li>
             				<li><!-- Lista Nominal: <span class="purple lista-nominal">0</span> --></li>
             			</ul>
@@ -114,8 +119,10 @@
   </body>
 </html>
 
+<!--
 <script language="Javascript">	
     	window.setTimeout(function(){
     		window.location.href = "index.php?e="+eleccion+"&id="+siguiente+'&p='+portada
     	},10000);	
 </script>
+-->

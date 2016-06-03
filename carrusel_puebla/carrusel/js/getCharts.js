@@ -187,11 +187,21 @@ var app_portada = {
 	        var nombreSeccion = entidad.titulo;
 	        var totalActas = entidad.actas_totales;
 			var totalVotos = entidad.votos;
+			var actasEsperadas = entidad.actas_esperadas;
+			var actasCapturadas = entidad.actas_acopiadas;
+			var actasPublicadas = entidad.TotalActasProcesadasGobernador;
+			var actasContabilizadas = entidad.actas_correctas;
+			var actasInconsistentes = entidad.ActasConInconsistencia;
 			//var listaNominal = entidad.lista_nominal;
 			
 	        $('.distrito-municipio').html(nombreSeccion);
 			$('span.total-actas').text(totalActas);
 			$('span.total-votos').text(totalVotos);
+			$('span.actas-esperadas').text(actasEsperadas);
+			$('span.actas-capturadas').text(actasCapturadas);
+			$('span.actas-publicadas').text(actasPublicadas);
+			$('span.actas-contabilizadas').text(actasContabilizadas);
+			$('span.actas-inconsistentes').text(actasInconsistentes);
 			//$('span.lista-nominal').text(listaNominal);
 			$('#txtsimulacro').html('Act. ' + data['extradata']['hora_actualizacion'] + '<br>V. ' + data['extradata']['simulacro']);
         
