@@ -107,7 +107,7 @@ table.data-detail th.partidos-th { width: 48px; text-align: center; font-size: 1
 table.votos-partidos { border: 1px solid #ccc; }
 table.votos-partidos thead { background-color: #221c1e; }
 table.votos-partidos th { color: #fff; }
-table.votos-partidos th, table.votos-partidos td { font-size: 12px; text-align: center; }
+table.votos-partidos th, table.votos-partidos td { font-size: 16px; text-align: center; }
 table.data-actas { border: 1px solid #ccc; }
 table.data-actas td { font-size: 12px; text-align: center; }
 
