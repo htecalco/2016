@@ -13,7 +13,7 @@ var app = {
 	        console.log(entidades[Number(app.id)+1]);
 	        if (typeof(entidades[Number(app.id)+1])!=='undefined'){
 		        siguiente=Number(app.id)+1;
-		        portada = app.categoria=='gobernador' && app.id%5 == 0 ? 1 : 0
+		        portada = app.categoria=='gobernador' && siguiente%5 == 0 ? 1 : 0
 	        }else{
 		        siguiente=0;
 		        portada= app.categoria=='gobernador' ? 1 : 0 ;
