@@ -5,9 +5,9 @@ var app = {
         $.get('../json/'+app.categoria+'.json', app.getCharts);
     },
     getCharts : function (data){
+	    $('#txtsimulacro').html('Act. ' + data['extradata']['hora_actualizacion'] + '<br>V. ' + data['extradata']['simulacro']);
         entidades=data['data'];
-        //console.log(entidades.length);
-        console.log(portada);
+        
         if (entidades.length!=0){
 	        entidad=entidades[app.id];
 	        console.log(entidades[Number(app.id)+1]);
@@ -27,7 +27,7 @@ var app = {
 			$('span.total-actas').text(totalActas);
 			$('span.total-votos').text(totalVotos);
 			$('span.lista-nominal').text(listaNominal);
-			$('#txtsimulacro').html('Act. ' + data['extradata']['hora_actualizacion'] + '<br>V. ' + data['extradata']['simulacro']);
+			
         }
         
         var porcentajeVotacion = Number(entidad.participacion);
