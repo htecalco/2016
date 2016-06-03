@@ -1,6 +1,7 @@
 <?php
 $error=false;
 $ch = curl_init();
+$directorio = dirname( __FILE__ );
 $source = "http://api.preptam.org/gobernador/carrusel";
 curl_setopt($ch, CURLOPT_URL, $source);
 curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
@@ -15,7 +16,7 @@ if(curl_errno($ch))
 curl_close($ch);
 
 if (!$error){
-	$destination = "json/gobernador.json";
+	$destination = $directorio . "/json/gobernador.json";
 	$file = fopen($destination, "w+");
 	fputs($file, $data);
 	fclose($file);
@@ -37,7 +38,7 @@ if(curl_errno($ch))
 curl_close($ch);
 
 if (!$error){
-	$destination = "json/diputados.json";
+	$destination = $directorio . "/json/diputados.json";
 	$file = fopen($destination, "w+");
 	fputs($file, $data);
 	fclose($file);
@@ -59,7 +60,7 @@ if(curl_errno($ch))
 curl_close($ch);
 
 if (!$error){
-	$destination = "json/ayuntamientos.json";
+	$destination = $directorio . "/json/ayuntamientos.json";
 	$file = fopen($destination, "w+");
 	fputs($file, $data);
 	fclose($file);
