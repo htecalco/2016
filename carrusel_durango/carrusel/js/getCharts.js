@@ -68,7 +68,7 @@ var app = {
                 }*/
 
                 markup += '<tr>';
-                markup += '<td class="text-center"><img src="images/partidos/'+imagen+'" width="30" height="30" alt=""></td>';
+                markup += '<td class="text-center"><img src="images/partidos/'+imagen+'" width="50" alt=""></td>';
                 markup += '<td class="ng-binding">'+partido.votos+'</td>';
                 markup += '</tr>';
             }
@@ -125,7 +125,7 @@ var app = {
             title: {
                 text: 'Participación Ciudadana'
             },
-            colors: ['#F8831C', '#BBB'],
+            colors: ['#714222', '#BBB'],
             series: [{
                 type: 'pie',
                 name: 'Participación Ciudadana',
@@ -156,7 +156,7 @@ var app = {
             title: {
                 text: 'Captura de Actas'
             },
-            colors: ['#F8831C', '#BBB'],
+            colors: ['#714222', '#BBB'],
             series: [{
                 type: 'pie',
                 name: 'Captura de Actas',
@@ -300,7 +300,7 @@ var app_portada = {
             title: {
                 text: 'Participación Ciudadana'
             },
-            colors: ['#F8831C', '#BBB'],
+            colors: ['#714222', '#BBB'],
             series: [{
                 type: 'pie',
                 name: 'Participación Ciudadana',
@@ -331,7 +331,7 @@ var app_portada = {
             title: {
                 text: 'Captura de Actas'
             },
-            colors: ['#F8831C', '#BBB'],
+            colors: ['#714222', '#BBB'],
             series: [{
                 type: 'pie',
                 name: 'Captura de Actas',
