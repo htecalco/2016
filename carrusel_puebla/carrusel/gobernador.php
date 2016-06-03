@@ -63,7 +63,7 @@
             	<div class="section-1">
             		<div class="totales">
             			<ul>
-            				<li>Total de Actas: <span class="purple total-actas">0</span></li>
+            				<li><!-- Total de Actas: <span class="purple total-actas">0</span> --></li>
             				<li>Actas esperadas: <span class="purple actas-esperadas">0</span></li>
             				<li>Actas capturadas: <span class="purple actas-capturadas">0</span></li>
             				<li>Actas publicadas: <span class="purple actas-publicadas">0</span></li>
