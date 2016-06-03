@@ -196,7 +196,7 @@ var app_portada = {
 			
 	        $('.distrito-municipio').html(nombreSeccion);
 			//$('span.total-actas').text(totalActas);
-			$('span.total-votos').text(totalVotos);
+			//$('span.total-votos').text(totalVotos);
 			$('span.actas-esperadas').text(actasEsperadas);
 			$('span.actas-capturadas').text(actasCapturadas);
 			$('span.actas-publicadas').text(actasPublicadas);
