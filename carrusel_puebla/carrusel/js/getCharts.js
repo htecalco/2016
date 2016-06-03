@@ -208,7 +208,7 @@ var app_portada = {
         
         var porcentajeVotacion = Number(entidad.porcentaje_participacion);
         var porcentajeAbstencionismo = 100 - porcentajeVotacion;
-        var porcentajeActasCapturadas = Number(entidad.porcentajeactascapturadasgobernador);
+        var porcentajeActasCapturadas = Number(entidad.PorcentajeActasCapturadasGobernador);
         var porcentajeActasXCapturar = 100 - porcentajeActasCapturadas;
 
         var dataGrafica = [];

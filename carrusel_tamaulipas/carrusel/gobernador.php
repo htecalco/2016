@@ -63,9 +63,14 @@
             	<div class="section-1">
             		<div class="totales">
             			<ul>
-            				<li>Total de Actas: <span class="purple total-actas">0</span></li>
+            				<li><!-- Total de Actas: <span class="purple total-actas">0</span> --></li>
+            				<li>Actas esperadas: <span class="purple actas-esperadas">0</span></li>
+            				<li>Actas capturadas: <span class="purple actas-capturadas">0</span></li>
+            				<li>Actas publicadas: <span class="purple actas-publicadas">0</span></li>
+            				<li>Actas contabilizadas: <span class="purple actas-contabilizadas">0</span></li>
+            				<li>Actas inconsistentes: <span class="purple actas-inconsistentes">0</span></li>
             				<li><!-- Total de Votos: <span class="purple total-votos">0</span> --></li>
-            				<li>Lista Nominal: <span class="purple lista-nominal">0</span></li>
+            				<li><!-- Lista Nominal: <span class="purple lista-nominal">0</span> --></li>
             			</ul>
             		</div>
             		<div class="subsection-1">
@@ -73,8 +78,8 @@
             				<table class="table table-stripped votos-partidos">
 								<thead>
 									<tr>
-										<th>Partido</th>
-										<th>Votos por Partido</th>
+										<th>Candidato</th>
+										<th>Votos por Candidato</th>
 									</tr>
 								</thead>
 								<tbody>
@@ -83,7 +88,12 @@
 							</table>
 							<small id="txtsimulacro" style="font-size: .62em;"></small>
             			</div>
-            			<div class="column-chart"></div>
+            			<div class="column-chart" style="height: 720px; padding: 30px 30px 0px 30px"></div>
+            			<div style="width: 1130px; background-color: white; float: right; text-align: right" align="right">
+            			<table cellpadding="0" cellspacing="0" style="float: right; width: 990px; margin-right: 40px" id="imagenespartidos" width="">
+	            			<tbody></tbody>
+            			</table>
+            			</div>
             			<div class="clear"></div>
             		</div>
             	</div>
@@ -100,26 +110,19 @@
     <script type="text/javascript" src="js/highcharts.js"></script>
     <script type="text/javascript" src="js/getCharts.js"></script>
     <script type="text/javascript">
-    	$(document).ready(function (){
-	    	if (portada==1){
+    	$(document).ready(function (){	    	
 		    	app_portada.categoria = eleccion;
 				app_portada.id = actual;
-				app_portada.getData();
-	    	}else{
-    			app.categoria = eleccion;
-				app.id = actual;
-				app.getData();
-			}
+				app_portada.getData();	    	
     	});
     </script>
   </body>
 </html>
+
+
 <script language="Javascript">	
     	window.setTimeout(function(){
-	    	if (portada==1){
-		    	window.location.href = "gobernador.php?e="+eleccion+"&id="+siguiente+'&p='+portada
-	    	}else{
-    			window.location.href = "index.php?e="+eleccion+"&id="+siguiente+'&p='+portada
-    		}
+    		window.location.href = "index.php?e="+eleccion+"&id="+siguiente+'&p='+portada
     	},10000);	
 </script>
+
