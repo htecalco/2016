@@ -43,7 +43,7 @@ var app = {
             var partido = entidad.votos_por_partido[i];
             var imagen = '';
 
-            if ( partido.en_grafica ){
+            //if ( partido.en_grafica ){
                 
                 obj.name = partido.partido_siglas;
                 
@@ -52,9 +52,9 @@ var app = {
                 obj.color = partido.color;
 
                 dataGrafica.push(obj);
-            }
+            //}
 
-            if ( partido.en_tabla ){
+            //if ( partido.en_tabla ){
 
                 /*if ( partido.partido_imagen === null && partido.img_coalicion === null ){
                     imagen = partido.partido_siglas + '.png';
@@ -71,7 +71,7 @@ var app = {
                 markup += '<td class="text-center"><img src="images/partidos/'+imagen+'" width="30" height="30" alt=""></td>';
                 markup += '<td class="ng-binding">'+partido.votos+'</td>';
                 markup += '</tr>';
-            }
+            //}
         }
 
         $('.votos-partidos tbody').html(markup);
