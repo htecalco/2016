@@ -73,8 +73,8 @@
             				<table class="table table-stripped votos-partidos">
 								<thead>
 									<tr>
-										<th>Partido</th>
-										<th>Votos por Partido</th>
+										<th>Candidato</th>
+										<th>Votos por Candidato</th>
 									</tr>
 								</thead>
 								<tbody>
@@ -122,5 +122,5 @@
 	    	}else{
     			window.location.href = "index.php?e="+eleccion+"&id="+siguiente+'&p='+portada
     		}
-    	},10000);	
+    	},15000);	
 </script>

@@ -104,7 +104,7 @@ var app = {
                 }
             },
             series: [{
-                name: 'Partidos Políticos',
+                name: 'Candidatos',
                 colorByPoint: true,
                 data: dataGrafica
             }],
