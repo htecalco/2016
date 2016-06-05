@@ -69,7 +69,8 @@
             			</ul>
             		</div>
             		<div class="subsection-1">
-            			<div class="table">
+            			<!--<div class="table">
+
             				<table class="table table-stripped votos-partidos">
 								<thead>
 									<tr>
@@ -78,13 +79,14 @@
 									</tr>
 								</thead>
 								<tbody>
-									<!-- Vaciado de partidos -->
+									
 								</tbody>
 							</table>
-							<small id="txtsimulacro" style="font-size: .62em;"></small>
-            			</div>
+
+							
+            			</div>-->
             			<div class="column-chart"></div>
-            			<div class="clear"></div>
+<!--             			<div class="clear"></div> -->
             		</div>
             	</div>
             	<div class="section-2">
@@ -96,6 +98,7 @@
         </div>
         <!-- FIN DE CONTENIDO -->
     </section>
+    <small id="txtsimulacro" style="font-size: .62em;"></small>
     <script type="text/javascript" src="js/jquery.min.js"></script>
     <script type="text/javascript" src="js/highcharts.js"></script>
     <script type="text/javascript" src="js/getCharts.js"></script>
@@ -115,6 +118,7 @@
     </script>
   </body>
 </html>
+
 <script language="Javascript">	
     	window.setTimeout(function(){
 	    	if (portada==1){
