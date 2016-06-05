@@ -90,7 +90,7 @@
             			</div>
             			<div class="column-chart" style="height: 720px; padding: 30px 30px 0px 30px"></div>
             			<div style="width: 1130px; background-color: white; float: right; text-align: right" align="right">
-            			<table cellpadding="0" cellspacing="0" style="float: right; width: 990px; margin-right: 40px" id="imagenespartidos" width="">
+            			<table cellpadding="0" cellspacing="0" style="float: right; width: 1000px; margin-right: 40px" id="imagenespartidos" width="">
 	            			<tbody></tbody>
             			</table>
             			</div>
@@ -110,7 +110,8 @@
     <script type="text/javascript" src="js/highcharts.js"></script>
     <script type="text/javascript" src="js/getCharts.js"></script>
     <script type="text/javascript">
-    	$(document).ready(function (){	    	
+    	$(document).ready(function (){	
+	    	$.ajaxSetup({ cache: false });    	
 		    	app_portada.categoria = eleccion;
 				app_portada.id = actual;
 				app_portada.getData();	    	
@@ -120,9 +121,11 @@
 </html>
 
 
+
 <script language="Javascript">	
     	window.setTimeout(function(){
     		window.location.href = "index.php?e="+eleccion+"&id="+siguiente+'&p='+portada
     	},10000);	
 </script>
+
 

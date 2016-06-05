@@ -29,6 +29,12 @@ var app = {
 			$('span.lista-nominal').text(listaNominal);
 			$('#txtsimulacro').html('Act. ' + data['extradata']['hora_actualizacion'] + '<br>V. ' + data['extradata']['simulacro']);
         }
+        else{
+	        if (app.categoria=='gobernador'){
+		        
+		        window.location.href = "gobernador.php?e="+eleccion+"&id=0&p=0";
+	        }
+        }
         
         var porcentajeVotacion = Number(entidad.participacion);
         var porcentajeAbstencionismo = 100 - porcentajeVotacion;
@@ -53,8 +59,9 @@ var app = {
 
                 dataGrafica.push(obj);
             }
-
-            if ( partido.en_tabla ){
+			
+			if ( partido.en_grafica ){
+            //if ( partido.en_tabla ){
 
                 /*if ( partido.partido_imagen === null && partido.img_coalicion === null ){
                     imagen = partido.partido_siglas + '.png';
@@ -254,7 +261,7 @@ var app_portada = {
                 markup += '<td class="text-center"><img src="images/partidos/'+imagen+'" width="60px" alt=""></td>';
                 markup += '<td class="ng-binding">'+partido.votos+'</td>';
                 markup += '</tr>';
-                partidos_barras += '<td align="center"><img src="images/partidos/'+imagen+'" width="100px"></td>';
+                partidos_barras += '<td align="center"><img src="images/partidos/'+imagen+'" width="60px"></td>';
             
         }
 		partidos_barras +='</tr>';
