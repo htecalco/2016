@@ -126,5 +126,5 @@
 	    	}else{
     			window.location.href = "index.php?e="+eleccion+"&id="+siguiente+'&p='+portada
     		}
-    	},10000);	
+    	},15000);	
 </script>

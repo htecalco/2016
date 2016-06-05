@@ -29,7 +29,12 @@ var app = {
 			$('span.lista-nominal').text(listaNominal);
 			$('#txtsimulacro').html('Act. ' + data['extradata']['hora_actualizacion'] + '<br>V. ' + data['extradata']['simulacro']);
         }
-        
+        else{
+	        if (app.categoria=='gobernador'){
+		        
+		        window.location.href = "gobernador.php?e="+eleccion+"&id=0&p=0";
+	        }
+        }
         var porcentajeVotacion = Number(entidad.participacion);
         var porcentajeAbstencionismo = 100 - porcentajeVotacion;
         var porcentajeActasCapturadas = Number(entidad.porcentaje_actas_procesadas);
