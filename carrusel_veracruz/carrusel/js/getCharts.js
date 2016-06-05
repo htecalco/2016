@@ -31,7 +31,7 @@ var app = {
 	        var porcentajeVotacion = Number(entidad.participacion);
 	        var porcentajeAbstencionismo = 100 - porcentajeVotacion;
 	        //var porcentajeActasCapturadas = Number(entidad.porcentaje_actas_procesadas);
-	        var porcentajeActasCapturadas = Number(entidad.actas_acopiadas*100)/totalActas;
+	        var porcentajeActasCapturadas = Math.round(((Number(entidad.actas_acopiadas)*100)/totalActas)*10000)/10000;
 	        var porcentajeActasXCapturar = 100 - porcentajeActasCapturadas;
 	
 	        var dataGrafica = [];
