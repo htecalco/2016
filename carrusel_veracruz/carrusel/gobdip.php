@@ -17,7 +17,7 @@
 		eleccion=getUrlVars()["e"];
 		
 	}else{
-		var eleccion = 'gobernador';
+		var eleccion = 'diputados';
 	}
 	if (typeof(getUrlVars()["p"])!=='undefined'){
 		portada=getUrlVars()["p"];
@@ -27,13 +27,6 @@
 	}
 	
 </script>
-<style type="text/css">
-	.tablita-votos {float: right; width: 85%; margin-right: 41px}
-	@media screen and (min-width: 1200px) { .tablita-votos{margin-right: 41px; width: 87%; } }
-	@media screen and (min-width: 1800px) { .tablita-votos{margin-right: 41px; width: 88%; } }
-	@media screen and (min-width: 2000px) { .tablita-votos{margin-right: 41px; width: 89%; } }
-	@media screen and (min-width: 2200px) { .tablita-votos{margin-right: 41px; width: 90%; } }
-</style>
 <!doctype html>
 <html>
   <head>
@@ -70,14 +63,9 @@
             	<div class="section-1">
             		<div class="totales">
             			<ul>
-            				<li><!-- Total de Actas: <span class="purple total-actas">0</span> --></li>
-            				<li>Actas esperadas: <span class="purple actas-esperadas">0</span></li>
-            				<li>Actas capturadas: <span class="purple actas-capturadas">0</span></li>
-            				<li>Actas publicadas: <span class="purple actas-publicadas">0</span></li>
-            				<li>Actas contabilizadas: <span class="purple actas-contabilizadas">0</span></li>
-            				<li>Actas inconsistentes: <span class="purple actas-inconsistentes">0</span></li>
+            				<li>Total de Actas: <span class="purple total-actas">0</span></li>
             				<li><!-- Total de Votos: <span class="purple total-votos">0</span> --></li>
-            				<li><!-- Lista Nominal: <span class="purple lista-nominal">0</span> --></li>
+            				<li>Lista Nominal: <span class="purple lista-nominal">0</span></li>
             			</ul>
             		</div>
             		<div class="subsection-1">
@@ -85,8 +73,8 @@
             				<table class="table table-stripped votos-partidos">
 								<thead>
 									<tr>
-										<th style="padding: 8px 10px;">Candidato</th>
-										<th style="padding: 8px 10px;">Votos por Candidato</th>
+										<th style="padding: 8px 10px;">Partido</th>
+										<th style="padding: 8px 10px;">Votos por Partido</th>
 									</tr>
 								</thead>
 								<tbody>
@@ -95,12 +83,7 @@
 							</table>
 							
             			</div>
-            			<div class="column-chart" style="height: 720px; padding: 30px 30px 0px 30px"></div>
-            			<div style="width: 75%; background-color: white; float: right; text-align: right">
-            			<table cellpadding="0" class="tablita-votos" cellspacing="0" style="" id="imagenespartidos" width="">
-	            			<tbody></tbody>
-            			</table>
-            			</div>
+            			<div class="column-chart"></div>
             			<div class="clear"></div>
             		</div>
             	</div>
@@ -116,22 +99,34 @@
     <small id="txtsimulacro" style="font-size: .62em;"></small>
     <script type="text/javascript" src="js/jquery.min.js"></script>
     <script type="text/javascript" src="js/highcharts.js"></script>
-    <script type="text/javascript" src="js/getCharts.js"></script>
+    <script type="text/javascript" src="js/getChartsmix.js"></script>
     <script type="text/javascript">
     	$(document).ready(function (){
-	    	$.ajaxSetup({ cache: false });	    	
+	    	console.log(eleccion);
+	    	$.ajaxSetup({ cache: false });
+	    	if (eleccion=='gobernador'){
+		    	window.location.href = "gobernadordiputados.php?e="+eleccion+"&id="+siguiente+'&p='+portada
+	    	}
+	    	if (portada==1){
 		    	app_portada.categoria = eleccion;
 				app_portada.id = actual;
-				app_portada.getData();	    	
+				app_portada.getData();
+	    	}else{
+    			app.categoria = eleccion;
+				app.id = actual;
+				app.getData();
+			}
     	});
     </script>
   </body>
 </html>
 
-
-
 <script language="Javascript">	
     	window.setTimeout(function(){
-    		window.location.href = "index.php?e="+eleccion+"&id="+siguiente+'&p='+portada
+	    	if (portada==1 || eleccion=='gobernador'){
+		    	window.location.href = "gobernadordiputados.php?e="+eleccion+"&id="+siguiente+'&p='+portada
+	    	}else{
+    			window.location.href = "gobdip.php?e="+eleccion+"&id="+siguiente+'&p='+portada
+    		}
     	},15000);	
 </script>

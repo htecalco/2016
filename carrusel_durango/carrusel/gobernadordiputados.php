@@ -27,18 +27,11 @@
 	}
 	
 </script>
-<style type="text/css">
-	.tablita-votos {float: right; width: 85%; margin-right: 41px}
-	@media screen and (min-width: 1200px) { .tablita-votos{margin-right: 41px; width: 87%; } }
-	@media screen and (min-width: 1800px) { .tablita-votos{margin-right: 41px; width: 88%; } }
-	@media screen and (min-width: 2000px) { .tablita-votos{margin-right: 41px; width: 89%; } }
-	@media screen and (min-width: 2200px) { .tablita-votos{margin-right: 41px; width: 90%; } }
-</style>
 <!doctype html>
 <html>
   <head>
     <meta charset="utf-8">
-    <title>PROGRAMA DE RESULTADOS ELECTORALES PRELIMINARES DE VERACRUZ 2016</title>
+    <title>PROGRAMA DE RESULTADOS ELECTORALES PRELIMINARES DE DURANGO 2016</title>
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width">
     <meta http-equiv="cache-control" content="max-age=0" />
@@ -56,7 +49,7 @@
     <header>
         <div class="logo-instituto"></div>
         <div class="datos-elecciones">
-            <h3>VERACRUZ <span class="set-year">2016</span></h3>
+            <h3>DURANGO <span class="set-year">2016</span></h3>
             <h4>PROGRAMA DE RESULTADOS ELECTORALES PRELIMINARES</h4>
         </div>
         <div class="logo-proisi"><img src="images/logo_proisi.png" alt="" /></div>
@@ -81,23 +74,23 @@
             			</ul>
             		</div>
             		<div class="subsection-1">
-            			<div class="table-container">
+            			<div class="table">
             				<table class="table table-stripped votos-partidos">
 								<thead>
 									<tr>
-										<th style="padding: 8px 10px;">Candidato</th>
-										<th style="padding: 8px 10px;">Votos por Candidato</th>
+										<th>Candidato</th>
+										<th>Votos por Candidato</th>
 									</tr>
 								</thead>
 								<tbody>
 									<!-- Vaciado de partidos -->
 								</tbody>
 							</table>
-							
+							<small id="txtsimulacro" style="font-size: .62em;"></small>
             			</div>
             			<div class="column-chart" style="height: 720px; padding: 30px 30px 0px 30px"></div>
-            			<div style="width: 75%; background-color: white; float: right; text-align: right">
-            			<table cellpadding="0" class="tablita-votos" cellspacing="0" style="" id="imagenespartidos" width="">
+            			<div style="width: 1130px; background-color: white; float: right; text-align: right" align="right">
+            			<table cellpadding="0" cellspacing="0" style="float: right; width: 990px; margin-right: 40px" id="imagenespartidos" width="">
 	            			<tbody></tbody>
             			</table>
             			</div>
@@ -113,13 +106,12 @@
         </div>
         <!-- FIN DE CONTENIDO -->
     </section>
-    <small id="txtsimulacro" style="font-size: .62em;"></small>
     <script type="text/javascript" src="js/jquery.min.js"></script>
     <script type="text/javascript" src="js/highcharts.js"></script>
-    <script type="text/javascript" src="js/getCharts.js"></script>
+    <script type="text/javascript" src="js/getChartsmix.js"></script>
     <script type="text/javascript">
-    	$(document).ready(function (){
-	    	$.ajaxSetup({ cache: false });	    	
+    	$(document).ready(function (){	 
+	    	$.ajaxSetup({ cache: false });   	
 		    	app_portada.categoria = eleccion;
 				app_portada.id = actual;
 				app_portada.getData();	    	
@@ -129,9 +121,8 @@
 </html>
 
 
-
 <script language="Javascript">	
     	window.setTimeout(function(){
-    		window.location.href = "index.php?e="+eleccion+"&id="+siguiente+'&p='+portada
+    		window.location.href = "gobdip.php?e="+eleccion+"&id="+siguiente+'&p='+portada
     	},15000);	
 </script>

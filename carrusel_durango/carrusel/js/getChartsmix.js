@@ -5,18 +5,18 @@ var app = {
         $.get('../json/'+app.categoria+'.json', app.getCharts);
     },
     getCharts : function (data){
+	    $('#txtsimulacro').html('Act. ' + data['extradata']['hora_actualizacion'] + '<br>V. ' + data['extradata']['simulacro']);
         entidades=data['data'];
-        //console.log(entidades.length);
-        console.log(portada);
+        
         if (entidades.length!=0){
 	        entidad=entidades[app.id];
 	        console.log(entidades[Number(app.id)+1]);
 	        if (typeof(entidades[Number(app.id)+1])!=='undefined'){
 		        siguiente=Number(app.id)+1;
-		        portada = app.categoria=='gobernador' && siguiente%5 == 0 ? 1 : 0
+		        portada = (app.categoria=='gobernador' || app.categoria=='diputados') && siguiente%5 == 0 ? 1 : 0
 	        }else{
 		        siguiente=0;
-		        portada= app.categoria=='gobernador' ? 1 : 0 ;
+		        portada= (app.categoria=='gobernador' || app.categoria=='diputados') ? 1 : 0 ;
 	        }
 	        var nombreSeccion = 'ELECCI&Oacute;N DE ' + app.categoria.toUpperCase() + ': ' + entidad.nombre;
 	        var totalActas = entidad.total_actas;
@@ -28,15 +28,14 @@ var app = {
 			$('span.total-actas').text(totalActas);
 			$('span.total-votos').text(totalVotos);
 			$('span.lista-nominal').text(listaNominal);
-			$('#txtsimulacro').html('Act. ' + data['extradata']['hora_actualizacion'] + '<br>V. ' + data['extradata']['simulacro']);
+			
         }
         else{
-	        if (app.categoria=='gobernador'){
+	        if (app.categoria=='gobernador' || app.categoria=='diputados'){
 		        
-		        window.location.href = "gobernador.php?e="+eleccion+"&id=0&p=0";
+		        window.location.href = "gobernadordiputados.php?e="+eleccion+"&id=0&p=0";
 	        }
         }
-        
         var porcentajeVotacion = Number(entidad.participacion);
         var porcentajeAbstencionismo = 100 - porcentajeVotacion;
         var porcentajeActasCapturadas = Number(entidad.porcentaje_actas_procesadas);
@@ -51,7 +50,7 @@ var app = {
             var partido = entidad.votos_por_partido[i];
             var imagen = '';
 
-            if ( partido.en_grafica ){
+            //if ( partido.en_grafica ){
                 
                 obj.name = partido.partido_siglas;
                 
@@ -60,21 +59,15 @@ var app = {
                 obj.color = partido.color;
 
                 dataGrafica.push(obj);
-            }
-			
-			if ( partido.en_grafica ){
+            //}
+
             //if ( partido.en_tabla ){
 
                 /*if ( partido.partido_imagen === null && partido.img_coalicion === null ){
                     imagen = partido.partido_siglas + '.png';
                 } else {
                     if ( partido.imagen !== null ){*/
-                    if (app.categoria=='gobernador' && partido.partido_imagen== 'CI1.png'){
-	                    imagen = 'CHAVIRA.png';
-                    }else{
-	                    imagen = partido.partido_imagen;
-                    }
-                        
+                        imagen = partido.partido_imagen;
                     /*} 
                     if ( partido.img_coalicion !== null ){
                         imagen = partido.img_coalicion;
@@ -82,10 +75,10 @@ var app = {
                 }*/
 
                 markup += '<tr>';
-                markup += '<td class="text-center"><img src="images/partidos/'+imagen+'" width="30" height="30" alt=""></td>';
+                markup += '<td class="text-center"><img src="images/partidos/'+imagen+'" width="160" alt=""></td>';
                 markup += '<td class="ng-binding">'+partido.votos+'</td>';
                 markup += '</tr>';
-            }
+            //}
         }
 
         $('.votos-partidos tbody').html(markup);
@@ -113,7 +106,7 @@ var app = {
                 }
             },
             series: [{
-                name: 'Partidos Políticos',
+                name: 'Candidatos',
                 colorByPoint: true,
                 data: dataGrafica
             }],
@@ -139,7 +132,7 @@ var app = {
             title: {
                 text: 'Participación Ciudadana'
             },
-            colors: ['#A12A0F', '#BBB'],
+            colors: ['#714222', '#BBB'],
             series: [{
                 type: 'pie',
                 name: 'Participación Ciudadana',
@@ -170,7 +163,7 @@ var app = {
             title: {
                 text: 'Captura de Actas'
             },
-            colors: ['#A12A0F', '#BBB'],
+            colors: ['#714222', '#BBB'],
             series: [{
                 type: 'pie',
                 name: 'Captura de Actas',
@@ -189,7 +182,7 @@ var app_portada = {
     id : 0,
     getData : function (){
 	    console.log(app_portada.categoria);
-        $.get('../json/'+app_portada.categoria+'.json', app_portada.getCharts);
+        $.get('../json/gobernador.json', app_portada.getCharts);
     },
     getCharts : function (data){
         entidad=data['portada'];
@@ -247,12 +240,7 @@ var app_portada = {
                     imagen = partido.partido_siglas + '.png';
                 } else {
                     if ( partido.imagen !== null ){*/
-                    console.log(partido.imagen); console.log(app_portada.categoria);
-                    if (app_portada.categoria==='gobernador' && partido.imagen== 'CI1.png'){
-	                    imagen = 'CHAVIRA.png';
-                    }else{
-	                    imagen = partido.imagen;
-                    }
+                        imagen = partido.imagen;
                     /*} 
                     if ( partido.img_coalicion !== null ){
                         imagen = partido.img_coalicion;
@@ -260,10 +248,15 @@ var app_portada = {
                 }*/
 
                 markup += '<tr>';
-                markup += '<td class="text-center"><img src="images/partidos/'+imagen+'" width="60px" alt=""></td>';
+                if (imagen=='cnr.png' || imagen=='nulos.png'){
+	                size='160px';
+                }else{
+	                size='50px';
+                }
+                markup += '<td class="text-center"><img src="images/partidos/'+imagen+'" width="'+size+'" alt=""></td>';
                 markup += '<td class="ng-binding">'+partido.votos+'</td>';
                 markup += '</tr>';
-                partidos_barras += '<td align="center"><img src="images/partidos/'+imagen+'" width="60px"></td>';
+                partidos_barras += '<td align="center"><img src="images/partidos/'+imagen+'" width="100px"></td>';
             
         }
 		partidos_barras +='</tr>';
@@ -319,7 +312,7 @@ var app_portada = {
             title: {
                 text: 'Participación Ciudadana'
             },
-            colors: ['#A12A0F', '#BBB'],
+            colors: ['#714222', '#BBB'],
             series: [{
                 type: 'pie',
                 name: 'Participación Ciudadana',
@@ -350,7 +343,7 @@ var app_portada = {
             title: {
                 text: 'Captura de Actas'
             },
-            colors: ['#A12A0F', '#BBB'],
+            colors: ['#714222', '#BBB'],
             series: [{
                 type: 'pie',
                 name: 'Captura de Actas',

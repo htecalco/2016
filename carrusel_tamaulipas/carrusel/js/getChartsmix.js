@@ -7,16 +7,16 @@ var app = {
     getCharts : function (data){
         entidades=data['data'];
         //console.log(entidades.length);
-        console.log(portada);
+        console.log(entidades);
         if (entidades.length!=0){
 	        entidad=entidades[app.id];
 	        console.log(entidades[Number(app.id)+1]);
 	        if (typeof(entidades[Number(app.id)+1])!=='undefined'){
 		        siguiente=Number(app.id)+1;
-		        portada = app.categoria=='gobernador' && siguiente%5 == 0 ? 1 : 0
+		        portada = (app.categoria=='gobernador' || app.categoria=='diputados') && siguiente%5 == 0 ? 1 : 0
 	        }else{
 		        siguiente=0;
-		        portada= app.categoria=='gobernador' ? 1 : 0 ;
+		        portada= (app.categoria=='gobernador' || app.categoria=='diputados') ? 1 : 0 ;
 	        }
 	        var nombreSeccion = 'ELECCI&Oacute;N DE ' + app.categoria.toUpperCase() + ': ' + entidad.nombre;
 	        var totalActas = entidad.total_actas;
@@ -31,9 +31,9 @@ var app = {
 			$('#txtsimulacro').html('Act. ' + data['extradata']['hora_actualizacion'] + '<br>V. ' + data['extradata']['simulacro']);
         }
         else{
-	        if (app.categoria=='gobernador'){
+	        if (app.categoria=='gobernador' || app.categoria=='diputados'){
 		        
-		        window.location.href = "gobernador.php?e="+eleccion+"&id=0&p=0";
+		        window.location.href = "gobernadordiputados.php?e="+eleccion+"&id=0&p=0";
 	        }
         }
         
@@ -189,7 +189,7 @@ var app_portada = {
     id : 0,
     getData : function (){
 	    console.log(app_portada.categoria);
-        $.get('../json/'+app_portada.categoria+'.json', app_portada.getCharts);
+        $.get('../json/gobernador.json', app_portada.getCharts);
     },
     getCharts : function (data){
         entidad=data['portada'];

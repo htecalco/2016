@@ -5,18 +5,18 @@ var app = {
         $.get('../json/'+app.categoria+'.json', app.getCharts);
     },
     getCharts : function (data){
+	    $('#txtsimulacro').html('Act. ' + data['extradata']['hora_actualizacion'] + '<br>V. ' + data['extradata']['simulacro']);
         entidades=data['data'];
-        //console.log(entidades.length);
-        console.log(portada);
+        console.log(entidades.length);
         if (entidades.length!=0){
 	        entidad=entidades[app.id];
 	        console.log(entidades[Number(app.id)+1]);
 	        if (typeof(entidades[Number(app.id)+1])!=='undefined'){
 		        siguiente=Number(app.id)+1;
-		        portada = app.categoria=='gobernador' && siguiente%5 == 0 ? 1 : 0
+		        portada = (app.categoria=='gobernador' || app.categoria=='diputados') && siguiente%5 == 0 ? 1 : 0
 	        }else{
 		        siguiente=0;
-		        portada= app.categoria=='gobernador' ? 1 : 0 ;
+		        portada= (app.categoria=='gobernador' || app.categoria=='diputados') ? 1 : 0 ;
 	        }
 	        var nombreSeccion = 'ELECCI&Oacute;N DE ' + app.categoria.toUpperCase() + ': ' + entidad.nombre;
 	        var totalActas = entidad.total_actas;
@@ -28,159 +28,154 @@ var app = {
 			$('span.total-actas').text(totalActas);
 			$('span.total-votos').text(totalVotos);
 			$('span.lista-nominal').text(listaNominal);
-			$('#txtsimulacro').html('Act. ' + data['extradata']['hora_actualizacion'] + '<br>V. ' + data['extradata']['simulacro']);
-        }
-        else{
-	        if (app.categoria=='gobernador'){
-		        
-		        window.location.href = "gobernador.php?e="+eleccion+"&id=0&p=0";
-	        }
-        }
-        
-        var porcentajeVotacion = Number(entidad.participacion);
-        var porcentajeAbstencionismo = 100 - porcentajeVotacion;
-        var porcentajeActasCapturadas = Number(entidad.porcentaje_actas_procesadas);
-        var porcentajeActasXCapturar = 100 - porcentajeActasCapturadas;
-        var procesadasrestantes= totalActas-procesadas;
-
-        var dataGrafica = [];
-        var markup = '';   
-
-        for ( var i = 0; i < entidad.votos_por_partido.length; i++ ){
-            var obj = {};
-            var partido = entidad.votos_por_partido[i];
-            var imagen = '';
-
-            if ( partido.en_grafica ){
-                
-                obj.name = partido.partido_siglas;
-                
-                
-                obj.y = Number(partido.votos);
-                obj.color = partido.color;
-
-                dataGrafica.push(obj);
-            }
 			
-			if ( partido.en_grafica ){
-            //if ( partido.en_tabla ){
-
-                /*if ( partido.partido_imagen === null && partido.img_coalicion === null ){
-                    imagen = partido.partido_siglas + '.png';
-                } else {
-                    if ( partido.imagen !== null ){*/
-                    if (app.categoria=='gobernador' && partido.partido_imagen== 'CI1.png'){
-	                    imagen = 'CHAVIRA.png';
-                    }else{
-	                    imagen = partido.partido_imagen;
-                    }
-                        
-                    /*} 
-                    if ( partido.img_coalicion !== null ){
-                        imagen = partido.img_coalicion;
-                    }
-                }*/
-
-                markup += '<tr>';
-                markup += '<td class="text-center"><img src="images/partidos/'+imagen+'" width="30" height="30" alt=""></td>';
-                markup += '<td class="ng-binding">'+partido.votos+'</td>';
-                markup += '</tr>';
-            }
-        }
-
-        $('.votos-partidos tbody').html(markup);
-
-        $('.column-chart').highcharts({
-            chart: {
-                type: 'column'
-            },
-            title: {
-                text: ''
-            },
-            xAxis: {
-                type: 'category'
-            },
-            yAxis: {
-                min: 0,
-                floor: 0,
-                title: {
-                    text: 'Votos'
-                }
-            },
-            plotOptions: {
-                series: {
-                    borderWidth: 0
-                }
-            },
-            series: [{
-                name: 'Partidos Políticos',
-                colorByPoint: true,
-                data: dataGrafica
-            }],
-            credits: { enabled: false }
-        });
-
-        $('.pie-chart-1').highcharts({
-            chart: {
-                plotBackgroundColor: '#fff',
-                plotBorderWidth: null,
-                plotShadow: false
-            },
-            plotOptions: {
-                 pie: {
-                    allowPointSelect: true,
-                    cursor: 'pointer',
-                    dataLabels: {
-                        enabled: false
-                    },
-                    showInLegend: true
-                }
-            },
-            title: {
-                text: 'Participación Ciudadana'
-            },
-            colors: ['#A12A0F', '#BBB'],
-            series: [{
-                type: 'pie',
-                name: 'Participación Ciudadana',
-                data: [
-                    ['Votos '+porcentajeVotacion+'%', porcentajeVotacion],
-                    ['Abstencionismo '+(Math.round(porcentajeAbstencionismo * 10000) / 10000)+'%', porcentajeAbstencionismo],
-                ]
-            }],
-            credits: { enabled: false }
-        });
-
-        $('.pie-chart-2').highcharts({
-            chart: {
-                plotBackgroundColor: '#fff',
-                plotBorderWidth: null,
-                plotShadow: false
-            },
-            plotOptions: {
-                 pie: {
-                    allowPointSelect: true,
-                    cursor: 'pointer',
-                    dataLabels: {
-                        enabled: false
-                    },
-                    showInLegend: true
-                }
-            },
-            title: {
-                text: 'Captura de Actas'
-            },
-            colors: ['#A12A0F', '#BBB'],
-            series: [{
-                type: 'pie',
-                name: 'Captura de Actas',
-                data: [
+	        var porcentajeVotacion = Number(entidad.participacion);
+	        var porcentajeAbstencionismo = 100 - porcentajeVotacion;
+	        //var porcentajeActasCapturadas = Number(entidad.porcentaje_actas_procesadas);
+	        var porcentajeActasCapturadas = Math.round(((Number(entidad.actas_acopiadas)*100)/totalActas)*10000)/10000;
+	        var porcentajeActasXCapturar = 100 - porcentajeActasCapturadas;
+	        var procesadasrestantes= totalActas-procesadas;
+	
+	        var dataGrafica = [];
+	        var markup = '';   
+	
+	        for ( var i = 0; i < entidad.votos_por_partido.length; i++ ){
+	            var obj = {};
+	            var partido = entidad.votos_por_partido[i];
+	            var imagen = '';
+	
+	            //if ( partido.en_grafica ){
+	                
+	                obj.name = partido.partido_siglas;
+	                
+	                
+	                obj.y = Number(partido.votos);
+	                obj.color = partido.color;
+	
+	                dataGrafica.push(obj);
+	            //}
+	
+	            //if ( partido.en_tabla ){
+	
+	                /*if ( partido.partido_imagen === null && partido.img_coalicion === null ){
+	                    imagen = partido.partido_siglas + '.png';
+	                } else {
+	                    if ( partido.imagen !== null ){*/
+	                        imagen = partido.partido_imagen;
+	                    /*} 
+	                    if ( partido.img_coalicion !== null ){
+	                        imagen = partido.img_coalicion;
+	                    }
+	                }*/
+	
+	                markup += '<tr>';
+	                markup += '<td class="text-center"><img src="images/partidos/'+imagen+'" width="150px" alt=""></td>';
+	                markup += '<td class="ng-binding">'+partido.votos+'</td>';
+	                markup += '</tr>';
+	            //}
+	        }
+	
+	        $('.votos-partidos tbody').html(markup);
+	
+	        $('.column-chart').highcharts({
+	            chart: {
+	                type: 'column'
+	            },
+	            title: {
+	                text: ''
+	            },
+	            xAxis: {
+	                type: 'category'
+	            },
+	            yAxis: {
+	                min: 0,
+	                floor: 0,
+	                title: {
+	                    text: 'Votos'
+	                }
+	            },
+	            plotOptions: {
+	                series: {
+	                    borderWidth: 0
+	                }
+	            },
+	            series: [{
+	                name: 'Partidos Políticos',
+	                colorByPoint: true,
+	                data: dataGrafica
+	            }],
+	            credits: { enabled: false }
+	        });
+	
+	        $('.pie-chart-1').highcharts({
+	            chart: {
+	                plotBackgroundColor: '#fff',
+	                plotBorderWidth: null,
+	                plotShadow: false
+	            },
+	            plotOptions: {
+	                 pie: {
+	                    allowPointSelect: true,
+	                    cursor: 'pointer',
+	                    dataLabels: {
+	                        enabled: false
+	                    },
+	                    showInLegend: true
+	                }
+	            },
+	            title: {
+	                text: 'Participación Ciudadana'
+	            },
+	            colors: ['#AD026D', '#BBB'],
+	            series: [{
+	                type: 'pie',
+	                name: 'Participación Ciudadana',
+	                data: [
+	                    ['Votos '+porcentajeVotacion+'%', porcentajeVotacion],
+						['Abstencionismo '+(Math.round(porcentajeAbstencionismo * 10000) / 10000)+'%', porcentajeAbstencionismo],
+	                ]
+	            }],
+	            credits: { enabled: false }
+	        });
+	
+	        $('.pie-chart-2').highcharts({
+	            chart: {
+	                plotBackgroundColor: '#fff',
+	                plotBorderWidth: null,
+	                plotShadow: false
+	            },
+	            plotOptions: {
+	                 pie: {
+	                    allowPointSelect: true,
+	                    cursor: 'pointer',
+	                    dataLabels: {
+	                        enabled: false
+	                    },
+	                    showInLegend: true
+	                }
+	            },
+	            title: {
+	                text: 'Captura de Actas'
+	            },
+	            colors: ['#AD026D', '#BBB'],
+	            series: [{
+	                type: 'pie',
+	                name: 'Captura de Actas',
+	                data: [
                     ['Capturadas: '+ procesadas, procesadas], //porcentajeActasCapturadas+'%', porcentajeActasCapturadas],
                     ['Por Capturar: '+ procesadasrestantes, procesadasrestantes], //(Math.round(porcentajeActasXCapturar * 10000) / 10000)+'%', porcentajeActasXCapturar],
                 ]
-            }],
-            credits: { enabled: false }
-        });
+	            }],
+	            credits: { enabled: false }
+	        });
+        
+        }//IF SIN DATOS
+        else{
+	        if (app.categoria=='gobernador' || app.categoria=='diputados'){
+		        
+		        window.location.href = "gobernadordiputados.php?e="+app.categoria+"&id=0&p=0";
+	        }
+        }
     }
 };
 
@@ -189,7 +184,7 @@ var app_portada = {
     id : 0,
     getData : function (){
 	    console.log(app_portada.categoria);
-        $.get('../json/'+app_portada.categoria+'.json', app_portada.getCharts);
+        $.get('../json/gobernador.json', app_portada.getCharts);
     },
     getCharts : function (data){
         entidad=data['portada'];
@@ -247,12 +242,7 @@ var app_portada = {
                     imagen = partido.partido_siglas + '.png';
                 } else {
                     if ( partido.imagen !== null ){*/
-                    console.log(partido.imagen); console.log(app_portada.categoria);
-                    if (app_portada.categoria==='gobernador' && partido.imagen== 'CI1.png'){
-	                    imagen = 'CHAVIRA.png';
-                    }else{
-	                    imagen = partido.imagen;
-                    }
+                        imagen = partido.imagen;
                     /*} 
                     if ( partido.img_coalicion !== null ){
                         imagen = partido.img_coalicion;
@@ -260,10 +250,10 @@ var app_portada = {
                 }*/
 
                 markup += '<tr>';
-                markup += '<td class="text-center"><img src="images/partidos/'+imagen+'" width="60px" alt=""></td>';
+                markup += '<td class="text-center"><img src="images/partidos/'+imagen+'" width="150px" alt=""></td>';
                 markup += '<td class="ng-binding">'+partido.votos+'</td>';
                 markup += '</tr>';
-                partidos_barras += '<td align="center"><img src="images/partidos/'+imagen+'" width="60px"></td>';
+                partidos_barras += '<td align="center"><img src="images/partidos/'+imagen+'" width="90px"></td>';
             
         }
 		partidos_barras +='</tr>';
@@ -319,7 +309,7 @@ var app_portada = {
             title: {
                 text: 'Participación Ciudadana'
             },
-            colors: ['#A12A0F', '#BBB'],
+            colors: ['#AD026D', '#BBB'],
             series: [{
                 type: 'pie',
                 name: 'Participación Ciudadana',
@@ -350,7 +340,7 @@ var app_portada = {
             title: {
                 text: 'Captura de Actas'
             },
-            colors: ['#A12A0F', '#BBB'],
+            colors: ['#AD026D', '#BBB'],
             series: [{
                 type: 'pie',
                 name: 'Captura de Actas',

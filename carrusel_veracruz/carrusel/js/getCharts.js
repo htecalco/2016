@@ -20,6 +20,7 @@ var app = {
 	        }
 	        var nombreSeccion = 'ELECCI&Oacute;N DE ' + app.categoria.toUpperCase() + ': ' + entidad.nombre;
 	        var totalActas = entidad.total_actas;
+	        var procesadas = entidad.actas_procesadas;
 			var totalVotos = entidad.total_de_votos;
 			var listaNominal = entidad.lista_nominal;
 			
@@ -33,6 +34,7 @@ var app = {
 	        //var porcentajeActasCapturadas = Number(entidad.porcentaje_actas_procesadas);
 	        var porcentajeActasCapturadas = Math.round(((Number(entidad.actas_acopiadas)*100)/totalActas)*10000)/10000;
 	        var porcentajeActasXCapturar = 100 - porcentajeActasCapturadas;
+	        var procesadasrestantes= totalActas-procesadas;
 	
 	        var dataGrafica = [];
 	        var markup = '';   
@@ -160,9 +162,9 @@ var app = {
 	                type: 'pie',
 	                name: 'Captura de Actas',
 	                data: [
-	                    ['Capturadas '+porcentajeActasCapturadas+'%', porcentajeActasCapturadas],
-						['Por Capturar '+(Math.round(porcentajeActasXCapturar * 10000) / 10000)+'%', porcentajeActasXCapturar],
-	                ]
+                    ['Capturadas: '+ procesadas, procesadas], //porcentajeActasCapturadas+'%', porcentajeActasCapturadas],
+                    ['Por Capturar: '+ procesadasrestantes, procesadasrestantes], //(Math.round(porcentajeActasXCapturar * 10000) / 10000)+'%', porcentajeActasXCapturar],
+                ]
 	            }],
 	            credits: { enabled: false }
 	        });

@@ -17,7 +17,7 @@
 		eleccion=getUrlVars()["e"];
 		
 	}else{
-		var eleccion = 'gobernador';
+		var eleccion = 'diputados';
 	}
 	if (typeof(getUrlVars()["p"])!=='undefined'){
 		portada=getUrlVars()["p"];
@@ -116,7 +116,7 @@
     <small id="txtsimulacro" style="font-size: .62em;"></small>
     <script type="text/javascript" src="js/jquery.min.js"></script>
     <script type="text/javascript" src="js/highcharts.js"></script>
-    <script type="text/javascript" src="js/getCharts.js"></script>
+    <script type="text/javascript" src="js/getChartsmix.js"></script>
     <script type="text/javascript">
     	$(document).ready(function (){
 	    	$.ajaxSetup({ cache: false });	    	
@@ -130,8 +130,10 @@
 
 
 
+
 <script language="Javascript">	
     	window.setTimeout(function(){
-    		window.location.href = "index.php?e="+eleccion+"&id="+siguiente+'&p='+portada
+    		window.location.href = "gobdip.php?e="+eleccion+"&id="+siguiente+'&p='+portada
     	},15000);	
 </script>
+
