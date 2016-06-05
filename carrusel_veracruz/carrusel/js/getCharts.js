@@ -30,7 +30,8 @@ var app = {
 			
 	        var porcentajeVotacion = Number(entidad.participacion);
 	        var porcentajeAbstencionismo = 100 - porcentajeVotacion;
-	        var porcentajeActasCapturadas = Number(entidad.porcentaje_actas_procesadas);
+	        //var porcentajeActasCapturadas = Number(entidad.porcentaje_actas_procesadas);
+	        var porcentajeActasCapturadas = Number(entidad.actas_acopiadas*100)/totalActas;
 	        var porcentajeActasXCapturar = 100 - porcentajeActasCapturadas;
 	
 	        var dataGrafica = [];
@@ -66,7 +67,7 @@ var app = {
 	                }*/
 	
 	                markup += '<tr>';
-	                markup += '<td class="text-center"><img src="images/partidos/'+imagen+'" width="40px" alt=""></td>';
+	                markup += '<td class="text-center"><img src="images/partidos/'+imagen+'" width="150px" alt=""></td>';
 	                markup += '<td class="ng-binding">'+partido.votos+'</td>';
 	                markup += '</tr>';
 	            //}
@@ -167,6 +168,12 @@ var app = {
 	        });
         
         }//IF SIN DATOS
+        else{
+	        if (app.categoria=='gobernador'){
+		        
+		        window.location.href = "gobernador.php?e="+eleccion+"&id=0&p=0";
+	        }
+        }
     }
 };
 
@@ -241,10 +248,10 @@ var app_portada = {
                 }*/
 
                 markup += '<tr>';
-                markup += '<td class="text-center"><img src="images/partidos/'+imagen+'" width="60px" alt=""></td>';
+                markup += '<td class="text-center"><img src="images/partidos/'+imagen+'" width="150px" alt=""></td>';
                 markup += '<td class="ng-binding">'+partido.votos+'</td>';
                 markup += '</tr>';
-                partidos_barras += '<td align="center"><img src="images/partidos/'+imagen+'" width="100px"></td>';
+                partidos_barras += '<td align="center"><img src="images/partidos/'+imagen+'" width="90px"></td>';
             
         }
 		partidos_barras +='</tr>';
