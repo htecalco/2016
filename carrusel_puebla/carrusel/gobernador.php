@@ -110,7 +110,8 @@
     <script type="text/javascript" src="js/highcharts.js"></script>
     <script type="text/javascript" src="js/getCharts.js"></script>
     <script type="text/javascript">
-    	$(document).ready(function (){	    	
+    	$(document).ready(function (){
+	    	$.ajaxSetup({ cache: false });	    	
 		    	app_portada.categoria = eleccion;
 				app_portada.id = actual;
 				app_portada.getData();	    	

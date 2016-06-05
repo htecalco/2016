@@ -101,6 +101,7 @@
     <script type="text/javascript" src="js/getCharts.js"></script>
     <script type="text/javascript">
     	$(document).ready(function (){
+	    	$.ajaxSetup({ cache: false });
 	    	if (portada==1){
 		    	app_portada.categoria = eleccion;
 				app_portada.id = actual;
