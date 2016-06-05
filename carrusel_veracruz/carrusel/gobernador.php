@@ -78,8 +78,8 @@
             				<table class="table table-stripped votos-partidos">
 								<thead>
 									<tr>
-										<th>Candidato</th>
-										<th>Votos por Candidato</th>
+										<th style="padding: 8px 10px;">Candidato</th>
+										<th style="padding: 8px 10px;">Votos por Candidato</th>
 									</tr>
 								</thead>
 								<tbody>
@@ -111,7 +111,8 @@
     <script type="text/javascript" src="js/highcharts.js"></script>
     <script type="text/javascript" src="js/getCharts.js"></script>
     <script type="text/javascript">
-    	$(document).ready(function (){	    	
+    	$(document).ready(function (){
+	    	$.ajaxSetup({ cache: false });	    	
 		    	app_portada.categoria = eleccion;
 				app_portada.id = actual;
 				app_portada.getData();	    	
@@ -119,6 +120,7 @@
     </script>
   </body>
 </html>
+
 
 
 <script language="Javascript">	

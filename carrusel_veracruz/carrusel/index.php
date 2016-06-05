@@ -73,8 +73,8 @@
             				<table class="table table-stripped votos-partidos">
 								<thead>
 									<tr>
-										<th>Partido</th>
-										<th>Votos por Partido</th>
+										<th style="padding: 8px 10px;">Partido</th>
+										<th style="padding: 8px 10px;">Votos por Partido</th>
 									</tr>
 								</thead>
 								<tbody>
@@ -102,6 +102,7 @@
     <script type="text/javascript" src="js/getCharts.js"></script>
     <script type="text/javascript">
     	$(document).ready(function (){
+	    	$.ajaxSetup({ cache: false });
 	    	if (portada==1){
 		    	app_portada.categoria = eleccion;
 				app_portada.id = actual;
@@ -115,6 +116,7 @@
     </script>
   </body>
 </html>
+
 <script language="Javascript">	
     	window.setTimeout(function(){
 	    	if (portada==1){

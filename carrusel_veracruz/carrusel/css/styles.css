@@ -49,7 +49,7 @@ section .container { padding-top: 30px; }
 .pie-chart-1, .pie-chart-2 { background-color: #fff; padding: 20px; height: 360px; }
 .pie-chart-2 { margin-top: 60px; }
 
-table.table th, table.table td { padding: 8px 10px; font-size: 18px; font-family: Arial, sans-serif; vertical-align: middle; border-bottom: 1px solid #ddd; }
+table.table th, table.table td { padding: 8px 2px; font-size: 18px; font-family: Arial, sans-serif; vertical-align: middle; border-bottom: 1px solid #ddd; }
 
 table.votos-partidos { border: 1px solid #ccc; }
 table.votos-partidos thead { background-color: #221c1e; }
