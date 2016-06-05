@@ -43,7 +43,7 @@ var app = {
             var partido = entidad.votos_por_partido[i];
             var imagen = '';
 
-            //if ( partido.en_grafica ){
+            if ( partido.en_grafica ){
                 
                 obj.name = partido.partido_siglas;
                 
@@ -52,15 +52,20 @@ var app = {
                 obj.color = partido.color;
 
                 dataGrafica.push(obj);
-            //}
+            }
 
-            //if ( partido.en_tabla ){
+            if ( partido.en_tabla ){
 
                 /*if ( partido.partido_imagen === null && partido.img_coalicion === null ){
                     imagen = partido.partido_siglas + '.png';
                 } else {
                     if ( partido.imagen !== null ){*/
-                        imagen = partido.partido_imagen;
+                    if (app.categoria=='gobernador' && partido.partido_imagen== 'CI1.png'){
+	                    imagen = 'CHAVIRA.png';
+                    }else{
+	                    imagen = partido.partido_imagen;
+                    }
+                        
                     /*} 
                     if ( partido.img_coalicion !== null ){
                         imagen = partido.img_coalicion;
@@ -71,7 +76,7 @@ var app = {
                 markup += '<td class="text-center"><img src="images/partidos/'+imagen+'" width="30" height="30" alt=""></td>';
                 markup += '<td class="ng-binding">'+partido.votos+'</td>';
                 markup += '</tr>';
-            //}
+            }
         }
 
         $('.votos-partidos tbody').html(markup);
@@ -130,8 +135,8 @@ var app = {
                 type: 'pie',
                 name: 'Participación Ciudadana',
                 data: [
-                    ['Votos', porcentajeVotacion],
-                    ['Abstencionismo', porcentajeAbstencionismo],
+                    ['Votos '+porcentajeVotacion+'%', porcentajeVotacion],
+                    ['Abstencionismo '+(Math.round(porcentajeAbstencionismo * 10000) / 10000)+'%', porcentajeAbstencionismo],
                 ]
             }],
             credits: { enabled: false }
@@ -161,8 +166,8 @@ var app = {
                 type: 'pie',
                 name: 'Captura de Actas',
                 data: [
-                    ['Capturadas', porcentajeActasCapturadas],
-                    ['Por Capturar', porcentajeActasXCapturar],
+                    ['Capturadas '+porcentajeActasCapturadas+'%', porcentajeActasCapturadas],
+                    ['Por Capturar '+(Math.round(porcentajeActasXCapturar * 10000) / 10000)+'%', porcentajeActasXCapturar],
                 ]
             }],
             credits: { enabled: false }
@@ -233,7 +238,12 @@ var app_portada = {
                     imagen = partido.partido_siglas + '.png';
                 } else {
                     if ( partido.imagen !== null ){*/
-                        imagen = partido.imagen;
+                    console.log(partido.imagen); console.log(app_portada.categoria);
+                    if (app_portada.categoria==='gobernador' && partido.imagen== 'CI1.png'){
+	                    imagen = 'CHAVIRA.png';
+                    }else{
+	                    imagen = partido.imagen;
+                    }
                     /*} 
                     if ( partido.img_coalicion !== null ){
                         imagen = partido.img_coalicion;
@@ -305,8 +315,8 @@ var app_portada = {
                 type: 'pie',
                 name: 'Participación Ciudadana',
                 data: [
-                    ['Votos', porcentajeVotacion],
-                    ['Abstencionismo', porcentajeAbstencionismo],
+                    ['Votos '+porcentajeVotacion+'%', porcentajeVotacion],
+                    ['Abstencionismo '+(Math.round(porcentajeAbstencionismo * 10000) / 10000)+'%', porcentajeAbstencionismo],
                 ]
             }],
             credits: { enabled: false }
@@ -336,8 +346,8 @@ var app_portada = {
                 type: 'pie',
                 name: 'Captura de Actas',
                 data: [
-                    ['Capturadas', porcentajeActasCapturadas],
-                    ['Por Capturar', porcentajeActasXCapturar],
+                    ['Capturadas '+porcentajeActasCapturadas+'%', porcentajeActasCapturadas],
+                    ['Por Capturar '+(Math.round(porcentajeActasXCapturar * 10000) / 10000)+'%', porcentajeActasXCapturar],
                 ]
             }],
             credits: { enabled: false }

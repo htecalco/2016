@@ -130,8 +130,8 @@ var app = {
                 type: 'pie',
                 name: 'Participación Ciudadana',
                 data: [
-                    ['Votos', porcentajeVotacion],
-                    ['Abstencionismo', porcentajeAbstencionismo],
+                    ['Votos '+porcentajeVotacion+'%', porcentajeVotacion],
+                    ['Abstencionismo '+(Math.round(porcentajeAbstencionismo * 10000) / 10000)+'%', porcentajeAbstencionismo],
                 ]
             }],
             credits: { enabled: false }
@@ -161,8 +161,8 @@ var app = {
                 type: 'pie',
                 name: 'Captura de Actas',
                 data: [
-                    ['Capturadas', porcentajeActasCapturadas],
-                    ['Por Capturar', porcentajeActasXCapturar],
+                    ['Capturadas '+porcentajeActasCapturadas+'%', porcentajeActasCapturadas],
+                    ['Por Capturar '+(Math.round(porcentajeActasXCapturar * 10000) / 10000)+'%', porcentajeActasXCapturar],
                 ]
             }],
             credits: { enabled: false }
@@ -305,8 +305,8 @@ var app_portada = {
                 type: 'pie',
                 name: 'Participación Ciudadana',
                 data: [
-                    ['Votos', porcentajeVotacion],
-                    ['Abstencionismo', porcentajeAbstencionismo],
+                    ['Votos '+porcentajeVotacion+'%', porcentajeVotacion],
+                    ['Abstencionismo '+(Math.round(porcentajeAbstencionismo * 10000) / 10000)+'%', porcentajeAbstencionismo],
                 ]
             }],
             credits: { enabled: false }
@@ -336,8 +336,8 @@ var app_portada = {
                 type: 'pie',
                 name: 'Captura de Actas',
                 data: [
-                    ['Capturadas', porcentajeActasCapturadas],
-                    ['Por Capturar', porcentajeActasXCapturar],
+                    ['Capturadas '+porcentajeActasCapturadas+'%', porcentajeActasCapturadas],
+                    ['Por Capturar '+(Math.round(porcentajeActasXCapturar * 10000) / 10000)+'%', porcentajeActasXCapturar],
                 ]
             }],
             credits: { enabled: false }
