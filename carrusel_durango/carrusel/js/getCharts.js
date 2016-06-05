@@ -29,7 +29,12 @@ var app = {
 			$('span.lista-nominal').text(listaNominal);
 			
         }
-        
+        else{
+	        if (app.categoria=='gobernador'){
+		        
+		        window.location.href = "gobernador.php?e="+eleccion+"&id=0&p=0";
+	        }
+        }
         var porcentajeVotacion = Number(entidad.participacion);
         var porcentajeAbstencionismo = 100 - porcentajeVotacion;
         var porcentajeActasCapturadas = Number(entidad.porcentaje_actas_procesadas);
@@ -68,7 +73,7 @@ var app = {
                 }*/
 
                 markup += '<tr>';
-                markup += '<td class="text-center"><img src="images/partidos/'+imagen+'" width="50" alt=""></td>';
+                markup += '<td class="text-center"><img src="images/partidos/'+imagen+'" width="160" alt=""></td>';
                 markup += '<td class="ng-binding">'+partido.votos+'</td>';
                 markup += '</tr>';
             //}
@@ -241,7 +246,12 @@ var app_portada = {
                 }*/
 
                 markup += '<tr>';
-                markup += '<td class="text-center"><img src="images/partidos/'+imagen+'" width="60px" alt=""></td>';
+                if (imagen=='cnr.png' || imagen=='nulos.png'){
+	                size='160px';
+                }else{
+	                size='50px';
+                }
+                markup += '<td class="text-center"><img src="images/partidos/'+imagen+'" width="'+size+'" alt=""></td>';
                 markup += '<td class="ng-binding">'+partido.votos+'</td>';
                 markup += '</tr>';
                 partidos_barras += '<td align="center"><img src="images/partidos/'+imagen+'" width="100px"></td>';
